@@ -17,3 +17,9 @@ class Equality(TestCase):
             Fraction(1, 2),
             Fraction(1, 2)
         )
+
+    def test_different_fractions_are_not_equal(self):
+        self.assertNotEqual(
+            Fraction(3, 2),
+            Fraction(4, 5)
+        )

@@ -9,4 +9,5 @@ class Fraction(object):
         self.denominator = denominator
 
     def __eq__(self, other):
-        return True
+        return (self.numerator == other.numerator
+                and self.denominator == other.denominator)
