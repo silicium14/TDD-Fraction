@@ -23,3 +23,11 @@ class Equality(TestCase):
             Fraction(3, 2),
             Fraction(4, 5)
         )
+
+
+class AddFractionAndInteger(TestCase):
+    def test_one_plus_one_half_equals_two_halves(self):
+        self.assertEqual(
+            add(1, Fraction(1, 2)),
+            Fraction(3, 2)
+        )

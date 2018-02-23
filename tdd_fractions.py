@@ -1,5 +1,10 @@
 
 def add(left, right):
+    if isinstance(right, Fraction):
+        return Fraction(
+            left*right.denominator + right.numerator,
+            right.denominator
+        )
     return left+right
 
 
