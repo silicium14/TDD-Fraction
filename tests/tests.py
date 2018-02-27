@@ -45,3 +45,11 @@ class FractionIsPrintedCorrecly(TestCase):
             "15/8",
             str(Fraction(15, 8))
         )
+
+
+class AddTwoFractions(TestCase):
+    def test_one_fifth_plus_one_sixth_equals_eleven_on_thirty(self):
+        self.assertEqual(
+            Fraction(11, 30),
+            add(Fraction(1, 5), Fraction(1, 6))
+        )
