@@ -32,6 +32,12 @@ class AddFractionAndInteger(TestCase):
             Fraction(3, 2)
         )
 
+    def test_two_fifths_plus_two_equals_thriteen_fifths(self):
+        self.assertEqual(
+            add(Fraction(2, 5), 2),
+            Fraction(12, 5)
+        )
+
 
 class FractionIsPrintedCorrecly(TestCase):
     def test_fraction_representation(self):

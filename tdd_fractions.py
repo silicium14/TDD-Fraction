@@ -2,8 +2,13 @@
 def add(left, right):
     if isinstance(right, Fraction):
         return Fraction(
-            left*right.denominator + right.numerator,
+            left * right.denominator + right.numerator,
             right.denominator
+        )
+    if isinstance(left, Fraction):
+        return Fraction(
+            right * left.denominator + left.numerator,
+            left.denominator
         )
     return left+right
 
