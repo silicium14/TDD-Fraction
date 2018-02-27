@@ -1,21 +1,4 @@
-
-def add(left, right):
-    if isinstance(left, Fraction) and isinstance(right, Fraction):
-        return Fraction(
-            left.numerator * right.denominator + right.numerator * left.denominator,
-            left.denominator * right.denominator
-        )
-    if isinstance(right, Fraction):
-        return Fraction(
-            left * right.denominator + right.numerator,
-            right.denominator
-        )
-    if isinstance(left, Fraction):
-        return Fraction(
-            right * left.denominator + left.numerator,
-            left.denominator
-        )
-    return left+right
+from typing import Union
 
 
 class Fraction(object):
@@ -31,3 +14,24 @@ class Fraction(object):
         return "{numerator}/{denominator}".format(
             numerator=self.numerator, denominator=self.denominator
         )
+
+
+def add(left: Union[int, Fraction], right: Union[int, Fraction]):
+    return _add_fractions(
+        _coerce_into_fraction(left),
+        _coerce_into_fraction(right),
+    )
+
+
+def _coerce_into_fraction(number: Union[int, Fraction]):
+    if isinstance(number, int):
+        return Fraction(number, 1)
+    else:
+        return number
+
+
+def _add_fractions(left: Fraction, right: Fraction):
+    return Fraction(
+        left.numerator * right.denominator + right.numerator * left.denominator,
+        left.denominator * right.denominator
+    )
