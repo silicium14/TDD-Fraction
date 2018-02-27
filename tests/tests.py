@@ -31,3 +31,11 @@ class AddFractionAndInteger(TestCase):
             add(1, Fraction(1, 2)),
             Fraction(3, 2)
         )
+
+
+class FractionIsPrintedCorrecly(TestCase):
+    def test_fraction_representation(self):
+        self.assertEqual(
+            "15/8",
+            str(Fraction(15, 8))
+        )
