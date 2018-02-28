@@ -1,5 +1,7 @@
 from typing import Union
 
+import math
+
 
 class Fraction(object):
     def __init__(self, numerator: int, denominator: int):
@@ -16,10 +18,20 @@ class Fraction(object):
         )
 
 
+def _simplify_fraction(fraction: Fraction):
+    greatest_common_divisor = math.gcd(fraction.numerator, fraction.denominator)
+    return Fraction(
+        fraction.numerator/greatest_common_divisor,
+        fraction.denominator/greatest_common_divisor
+    )
+
+
 def add(left: Union[int, Fraction], right: Union[int, Fraction]):
-    return _add_fractions(
-        _coerce_into_fraction(left),
-        _coerce_into_fraction(right),
+    return _simplify_fraction(
+        _add_fractions(
+            _coerce_into_fraction(left),
+            _coerce_into_fraction(right),
+        )
     )
 
 

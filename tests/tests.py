@@ -53,3 +53,11 @@ class AddTwoFractions(TestCase):
             Fraction(11, 30),
             add(Fraction(1, 5), Fraction(1, 6))
         )
+
+
+class FractionReduction(TestCase):
+    def test_one_fourth_plus_one_fourth_equals_one_half(self):
+        self.assertEqual(
+            Fraction(1, 2),
+            add(Fraction(1, 4), Fraction(1, 4))
+        )
