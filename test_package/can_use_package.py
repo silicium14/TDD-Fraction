@@ -11,5 +11,5 @@ class CanUsePackage(TestCase):
         """
         self.assertEqual(
             tdd_fractions.add(tdd_fractions.Fraction(7, 4), tdd_fractions.Fraction(4, 5)),
-            tdd_fractions.Fraction(47, 15)
+            tdd_fractions.Fraction(51, 20)
         )
