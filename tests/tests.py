@@ -62,6 +62,12 @@ class FractionReduction(TestCase):
             add(Fraction(1, 4), Fraction(1, 4))
         )
 
+    def test_4_over_6_equals_2_over_3(self):
+        self.assertEqual(
+            Fraction(2, 3),
+            Fraction(4, 6)
+        )
+
 
 class FractionInstanciationConstraints(TestCase):
     def test_cannot_create_a_fraction_with_denominator_zero(self):

@@ -7,9 +7,8 @@ class Fraction(object):
     def __init__(self, numerator: int, denominator: int):
         if denominator == 0:
             raise DenominatorIsZero()
-        if math.copysign(1, denominator) < 0:
-            numerator = - numerator
-            denominator = abs(denominator)
+        numerator, denominator = self._move_sign_on_numerator(numerator, denominator)
+        numerator, denominator = self._simplify(numerator, denominator)
         self.numerator = numerator
         self.denominator = denominator
 
@@ -22,12 +21,24 @@ class Fraction(object):
             numerator=self.numerator, denominator=self.denominator
         )
 
+    @staticmethod
+    def _move_sign_on_numerator(numerator: int, denominator: int):
+        if math.copysign(1, denominator) < 0:
+            numerator = - numerator
+            denominator = abs(denominator)
+        return numerator, denominator
+
+    @staticmethod
+    def _simplify(numerator: int, denominator: int):
+        greatest_common_divisor = math.gcd(numerator, denominator)
+        return int(numerator/greatest_common_divisor), int(denominator/greatest_common_divisor)
+
 
 def _simplify_fraction(fraction: Fraction):
     greatest_common_divisor = math.gcd(fraction.numerator, fraction.denominator)
     return Fraction(
-        fraction.numerator/greatest_common_divisor,
-        fraction.denominator/greatest_common_divisor
+        int(fraction.numerator/greatest_common_divisor),
+        int(fraction.denominator/greatest_common_divisor)
     )
 
 
