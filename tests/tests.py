@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from tdd_fractions import add, Fraction
+from tdd_fractions import add, Fraction, DenominatorIsZero
 
 
 class AddIntegers(TestCase):
@@ -61,3 +61,9 @@ class FractionReduction(TestCase):
             Fraction(1, 2),
             add(Fraction(1, 4), Fraction(1, 4))
         )
+
+
+class FractionInstanciationConstraints(TestCase):
+    def test_cannot_create_a_fraction_with_denominator_zero(self):
+        with self.assertRaises(DenominatorIsZero):
+            _ = Fraction(8, 0)

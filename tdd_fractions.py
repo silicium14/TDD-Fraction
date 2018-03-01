@@ -6,6 +6,8 @@ import math
 class Fraction(object):
     def __init__(self, numerator: int, denominator: int):
         self.numerator = numerator
+        if denominator == 0:
+            raise DenominatorIsZero()
         self.denominator = denominator
 
     def __eq__(self, other):
@@ -47,3 +49,7 @@ def _add_fractions(left: Fraction, right: Fraction):
         left.numerator * right.denominator + right.numerator * left.denominator,
         left.denominator * right.denominator
     )
+
+
+class DenominatorIsZero(Exception):
+    pass
