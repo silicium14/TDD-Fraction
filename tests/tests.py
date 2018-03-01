@@ -67,3 +67,11 @@ class FractionInstanciationConstraints(TestCase):
     def test_cannot_create_a_fraction_with_denominator_zero(self):
         with self.assertRaises(DenominatorIsZero):
             _ = Fraction(8, 0)
+
+
+class NegativeFractions(TestCase):
+    def test_5_over_minus2_equals_minus5_over_2(self):
+        self.assertEqual(
+            Fraction(-5, 2),
+            Fraction(5, -2)
+        )

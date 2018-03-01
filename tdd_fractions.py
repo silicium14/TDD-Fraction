@@ -5,9 +5,12 @@ import math
 
 class Fraction(object):
     def __init__(self, numerator: int, denominator: int):
-        self.numerator = numerator
         if denominator == 0:
             raise DenominatorIsZero()
+        if math.copysign(1, denominator) < 0:
+            numerator = - numerator
+            denominator = abs(denominator)
+        self.numerator = numerator
         self.denominator = denominator
 
     def __eq__(self, other):
